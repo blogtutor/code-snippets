@@ -1,30 +1,29 @@
 # Redirects
+_These will work on  Cloudways or WP Engine. For other hosting, may need to change the https test condition (see below)._
 
-## Force SSL on Cloudways
-_Use on Cloudways or WP Engine. Do not use for GoDaddy Linux hosting._
+## Force SSL and REMOVE the "www"
 ```
-RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-```
-
-## Force SSL and STRIP www
-_On Cloudways or WP Engine. Do not use for GoDaddy Linux hosting._
-```
-# Force SSL and STRIP www
+# Force SSL and remove www
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www. [NC,OR]
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://DOMAIN.com/$1 [L,R=301]
 ```
 
-##Force SSL and ADD www - on Cloudways
+## Force SSL and ADD the "www"
 ```
-# Force SSL and ADD www 
+# Force SSL and add www 
 RewriteEngine on
 RewriteCond %{HTTP_HOST} !^www. [NC,OR]
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://www.DOMAIN.com/$1 [L,R=301]
+```
+
+## Force SSL
+```
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 ```
 
 ## Alternate ways to check for SSL
@@ -33,7 +32,7 @@ Do NOT use on WP Engine!_
 ```
 RewriteCond %{SERVER_PORT} 80 
 ```
-_Siteground / Bluehost / iPower_
+_Use this on Siteground / Bluehost / iPower._
 ```
 RewriteCond %{HTTPS} off
 ```
@@ -87,7 +86,8 @@ RewriteRule ^(.*)$ http://DOMNAIN.COM/$1 [L,R=301,NC]
 
 # Security Stuff
 
-## Use this for Mediavine Sites - after disabling extra security headers in Cloudproxy
+## Extra Security Headers
+_Use this for Mediavine Sites, after disabling "Extra Security Headers" in the Sucuri Firewall settings_
 ```
 # Extra Security Headers
 <IfModule mod_headers.c>
@@ -98,7 +98,7 @@ RewriteRule ^(.*)$ http://DOMNAIN.COM/$1 [L,R=301,NC]
 </IfModule>
 ```
 
-## Set Content Security Policy to Block Mixed Content. 
+## Content Security Policy to Block Mixed Content. 
 _https://help.mediavine.com/mediavine-learning-resources/force-all-ads-secure-with-a-content-security-policy_
 ```
 # Set Content Security Policy to Block Mixed Content. 
@@ -159,12 +159,14 @@ RewriteRule (.*)thumb.php$ - [L,R=404]
 
 # Miscellany
 
-## add this line to a rewrite condition if wanting to NOT redirect for let's encrypt cert setup/renewal
+## Don't redirect for Let's Encrypt cert setup or renewal
+_Add this line to a rewrite condition if wanting to NOT redirect for let's encrypt cert setup/renewal_
 ```
 RewriteCond %{REQUEST_URI} !^/.well-known/
 ```
 
-## Fix Pinterest Code Glitch. #_a5y_p=XXX being converted to %23_a5y_p=XXX which is causing 404s in Pinterest browser
+## Fix Pinterest Code Glitch. 
+_#_a5y_p=XXX being converted to %23_a5y_p=XXX which is causing 404s in Pinterest browser._
 ```
 RewriteEngine on
 RewriteRule ^(.*)\x23_a5y_p= https://domain.com/$1 [L,R=302,NE,NC]
