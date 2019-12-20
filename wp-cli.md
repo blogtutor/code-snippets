@@ -17,9 +17,9 @@ wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/([0-9]{2})/' 'https:
 ```
 _Remove /year/month/ from hardcodedlinks._
 ```
-wp search-replace 'simple-nourished-living.com/([0-9]{4})/([0-9]{2})/' 'simple-nourished-living.com/' --regex --skip-columns=guid --dry-run
+wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/' 'https://domain.com/' --regex --skip-columns=guid --dry-run
 ```
 _Remove /year/month/postname.html in permalinks_
 ```
-wp search-replace 'https://melaniemakes.com/([0-9]{4})/([0-9]{2})/(.*).html' 'https://melaniemakes.com/\3/' --regex --skip-columns=guid --dry-run
+wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/(.*).html' 'https://domain.com/\3/' --regex --skip-columns=guid --dry-run
 ```
