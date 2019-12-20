@@ -1,4 +1,6 @@
-# Standard NerdPress Additions
+# wp-config.php Tidbits
+
+## Standard NerdPress Additions
 ```
 // BEGIN NERDPRESS EDITS
 define( 'DISALLOW_FILE_EDIT', true ); 
