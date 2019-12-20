@@ -1,6 +1,4 @@
-# Learn More
-
-## RTFM
+# RTFM
 ```
 man [command]
 ```
