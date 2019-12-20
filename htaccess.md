@@ -165,7 +165,7 @@ RewriteCond %{REQUEST_URI} !^/.well-known/
 ```
 
 ## Fix Pinterest Code Glitch. 
-_"#_a5y_p=XXX" is being converted to "%23_a5y_p=XXX" which is causing 404s in Pinterest browser._
+_`#_a5y_p=XXX` is being converted to `%23_a5y_p=XXX` which is causing 404s in Pinterest browser._
 ```
 RewriteEngine on
 RewriteRule ^(.*)\x23_a5y_p= https://domain.com/$1 [L,R=302,NE,NC]
