@@ -102,7 +102,6 @@ _Use this for Mediavine Sites, after disabling "Extra Security Headers" in the S
 _https://help.mediavine.com/mediavine-learning-resources/force-all-ads-secure-with-a-content-security-policy_
 ```
 # Set Content Security Policy to Block Mixed Content. 
-# See: https://help.mediavine.com/mediavine-learning-resources/force-all-ads-secure-with-a-content-security-policy
 Header set Content-Security-Policy: block-all-mixed-content
 ```
 ## Prevent Sucuri Firewall Bypass
@@ -166,7 +165,7 @@ RewriteCond %{REQUEST_URI} !^/.well-known/
 ```
 
 ## Fix Pinterest Code Glitch. 
-_#_a5y_p=XXX being converted to %23_a5y_p=XXX which is causing 404s in Pinterest browser._
+_# #_a5y_p=XXX is being converted to %23_a5y_p=XXX which is causing 404s in Pinterest browser._
 ```
 RewriteEngine on
 RewriteRule ^(.*)\x23_a5y_p= https://domain.com/$1 [L,R=302,NE,NC]
