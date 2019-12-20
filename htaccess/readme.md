@@ -1,13 +1,15 @@
 # Redirects
 
 ## Force SSL on Cloudways
+_Use on Cloudways or WP Engine. Do not use for GoDaddy Linux hosting._
 ```
 RewriteEngine On
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 ```
 
-## Force SSL and STRIP www - on Cloudways or WP Engine. Do not use for GoDaddy Linux hosting.
+## Force SSL and STRIP www
+_On Cloudways or WP Engine. Do not use for GoDaddy Linux hosting._
 ```
 # Force SSL and STRIP www
 RewriteEngine on
@@ -26,11 +28,13 @@ RewriteRule ^(.*)$ https://www.DOMAIN.com/$1 [L,R=301]
 ```
 
 ## Alternate ways to check for SSL
+_This works on GoDaddy / Hostgator.
+Do NOT use on WP Engine!_
 ```
-# GoDaddy / Hostgator
-# Do NOT use on WP Engine!
 RewriteCond %{SERVER_PORT} 80 
-# Siteground / Bluehost / iPower 
+```
+_Siteground / Bluehost / iPower_
+```
 RewriteCond %{HTTPS} off
 ```
 
