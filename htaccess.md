@@ -156,6 +156,16 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*)thumb.php$ - [L,R=404]
 ```
 
+# Return 410 "Gone" to search engines
+_Use this code if your development or staging site has been indexed by Google or other crawlers, followed by a domain-wide 301 redirect for non-bots._
+_https://www.nerdpress.net/if-google-indexed-your-dev-site/_
+```
+# Issue a 410 "Gone" for Googlebot and other crawlers
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} Googlebot|Baidu|Bingbot|DuckDuckBot|Slurp|Yandex [NC]
+RewriteRule (.*) - [R=410,L]
+```
+
 # Miscellany
 
 ## Don't redirect for Let's Encrypt cert setup or renewal
