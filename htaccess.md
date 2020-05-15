@@ -26,6 +26,18 @@ RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 ```
 
+## Add Trailing Slash to URLs
+_WP Rocket breaks WordPress' built-in redirect to add the trailing slash back in, when serving cached pages. [This code restores that.](https://docs.wp-rocket.me/article/131-redirection-to-enforce-trailing-slash-on-urls) Place after WP Rocket's code, but before the sitewide http->https direct._
+```
+# Force trailing slash
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_METHOD} GET
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_FILENAME} !\.(gif|jpg|png|jpeg|css|xml|txt|js|php|scss|webp|mp3|avi|wav|mp4|mov)$ [NC]
+RewriteRule ^(.*)$ https://WWW.DOMAIN.COM/$1/ [L,R=301]
+```
+
 ## Alternate ways to check for SSL
 _This works on GoDaddy / Hostgator.
 Do NOT use on WP Engine!_
