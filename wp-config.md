@@ -106,3 +106,10 @@ define('SP_REQUEST_URL', ($_SERVER['HTTPS'] ? 'https://' : 'http://') . $_SERVER
 define('WP_SITEURL', SP_REQUEST_URL);
 define('WP_HOME', SP_REQUEST_URL);
 ```
+## Set WP Rocket License Constants
+_Remove once plugin is activated._
+```
+// WP Rocket license data
+define( 'WP_ROCKET_KEY', 'XXXXXX' );
+define( 'WP_ROCKET_EMAIL', 'email@domain.com' );
+```
