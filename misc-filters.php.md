@@ -10,3 +10,14 @@ function np_wpseo_breadcrumb_output( $output ){
 return $output;
 }
 ```
+## Display Errors even when WordPress doesn't
+Courtesy of Zack and Justin at [BigScoots](https://www.bigscoots.com/). Add at the top of `index.php`.
+```
+ini_set('error_reporting', E_ERROR);
+register_shutdown_function("fatal_handler");
+function fatal_handler() {
+$error = error_get_last();
+echo("<pre>");
+print_r($error);
+}
+```
