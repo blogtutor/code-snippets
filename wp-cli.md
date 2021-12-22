@@ -54,3 +54,24 @@ php wp-cli.phar --info
 
 If so, you can run any command using `php wp-cli.phar` instead of the `wp` shortcut.
 https://make.wordpress.org/cli/handbook/installing/
+
+## Malware Cleanup
+
+Check core integrity:
+```
+wp core verify-checksums
+```
+
+Quickly reinstall latest version of core files:
+
+```
+wp core download --force --skip-content
+```
+
+If infected/extra files found in `wp-admin` or `wp-includes`, quickly wipe those folders and then immediately reinstall. If working on a production site, run the above reinstall first to be sure that it will work.
+
+```
+rm -rf wp-admin wp-includes
+wp core download --force --skip-content
+```
+
