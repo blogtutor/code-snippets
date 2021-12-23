@@ -81,9 +81,10 @@ Reset **all** user passwords. Add `--skip-email` to not send an email notificati
 wp user reset-password $(wp user list --field=user_login)
 ```
 
-Reset administrator or editor passwords. Add `--skip-email` to not send an email notification.
+Reset administrator and/or editor passwords. Add `--skip-email` to not send an email notification.
 
 ```
 wp user reset-password $(wp user list --field=user_login --role=administrator)
 wp user reset-password $(wp user list --field=user_login --role=editor)
+wp user reset-password $(wp user list --role="administrator" --field=user_login && wp user list --role="editor" --field=user_login)
 ```
