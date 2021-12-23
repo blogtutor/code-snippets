@@ -75,8 +75,15 @@ rm -rf wp-admin wp-includes
 wp core download --force --skip-content
 ```
 
-Reset all user passwords. Add `--skip-email` to not send an email.
+Reset **all** user passwords. Add `--skip-email` to not send an email notification.
 
 ```
 wp user reset-password $(wp user list --field=user_login)
+```
+
+Reset administrator or editor passwords. Add `--skip-email` to not send an email notification.
+
+```
+wp user reset-password $(wp user list --field=user_login --role=administrator)
+wp user reset-password $(wp user list --field=user_login --role=editor)
 ```
