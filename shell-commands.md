@@ -21,6 +21,16 @@ ls -lhS *.zip
 ls -lhS *.zip *.gz
 ```
 
+### File Cleanup
+_Recursively remove all files of a specific type (in this case, .webp images)_
+```
+find . -type f -name '*.webp' -delete
+```
+_Delete a folder with stuff in it. CAREFUL: There is no confirmation and no undo!_
+```
+rm -rf foldername
+```
+
 # SSL Stuff
 
 ### Show SSL Certificate on a site:
