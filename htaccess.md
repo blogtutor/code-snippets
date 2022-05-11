@@ -1,5 +1,5 @@
 # Redirects
-_These will work on  Cloudways or WP Engine. For other hosting, may need to change the https test condition (see below)._
+_These will work on  Cloudways. For other hosting, may need to change the https test condition (see below)._
 
 ## Force SSL and REMOVE the "www"
 ```
@@ -8,6 +8,15 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www. [NC,OR]
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://DOMAIN.com/$1 [L,R=301]
+```
+_Alternate option without having to edit the domain:_
+```
+# Force SSL and remove www
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 ```
 
 ## Force SSL and ADD the "www"
@@ -18,8 +27,18 @@ RewriteCond %{HTTP_HOST} !^www. [NC,OR]
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://www.DOMAIN.com/$1 [L,R=301]
 ```
+_Alternate option without having to edit the domain:_
+```
+# Force SSL and add www
+RewriteEngine on
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
 
 ## Force SSL
+_Generally best to use the redirects above, as this can result in a chain redirect based on whether or not the `www` is used._
 ```
 RewriteEngine On
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -93,7 +112,7 @@ RewriteRule ^(.*)/amp https://WWW.DOMAIN.com/$1/ [L,R=301]
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^domain.com [NC,OR]
 RewriteCond %{HTTP_HOST} ^www.domain.com [NC]
-RewriteRule ^(.*)$ http://DOMNAIN.COM/$1 [L,R=301,NC]
+RewriteRule ^(.*)$ https://DOMAIN.COM/$1 [L,R=301,NC]
 ```
 
 # Security Stuff
