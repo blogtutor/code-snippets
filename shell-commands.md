@@ -21,6 +21,16 @@ ls -lhS *.zip
 ls -lhS *.zip *.gz
 ```
 
+### Check on files & disk usage
+_Get a total count of files in a folder and its subfolders_
+```
+find . -type f | wc -l
+```
+_Check total disk usage of a folder:_
+```
+du-h
+```
+
 ### File Cleanup
 _Recursively remove all files of a specific type (in this case, .webp images)_
 ```
