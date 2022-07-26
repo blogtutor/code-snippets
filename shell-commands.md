@@ -28,7 +28,7 @@ find . -type f | wc -l
 ```
 _Check total disk usage of a folder:_
 ```
-du-h
+du -h
 ```
 
 ### File Cleanup
