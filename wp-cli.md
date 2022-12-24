@@ -36,9 +36,11 @@ Use double-quotes around the search/replace fields for the escaping to work prop
 Note, also, the `\1\2` in the replacement - this will carry over the slug _and_ any trailing slash, quote, etc.
 
 If there are subcategories, be sure to replace them first!
+
+The sample code below searches only in `wp_posts wp_postmeta wp_comments wp_commentmeta wp_term_taxonomy wp_termmeta wp_options` to speed the process.
 ```
-wp search-replace "https:\/\/domain\.com\/category-name\/subcategory-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2" wp_posts wp_comments --regex --skip-columns=guid --dry-run
-wp search-replace "https:\/\/domain\.com\/category-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2" wp_posts wp_comments --regex --skip-columns=guid --dry-run
+wp search-replace "https:\/\/domain\.com\/category-name\/subcategory-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2" wp_posts wp_postmeta wp_comments wp_commentmeta wp_term_taxonomy wp_termmeta wp_options --regex --skip-columns=guid --dry-run
+wp search-replace "https:\/\/domain\.com\/category-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2"wp_posts wp_postmeta wp_comments wp_commentmeta wp_term_taxonomy wp_termmeta wp_options --regex --skip-columns=guid --dry-run
 ```
 
 ## Full list of built-in commands
