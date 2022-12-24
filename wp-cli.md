@@ -29,11 +29,16 @@ wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/(.*).html' 'https://
 
 This needs to be done separately for each hardcoded category URL, replacing the most specific categories (child categories) first. 
 
-`(.*?)(\/|'|"|\s|>)` [should avoid a greedy regex](https://github.com/wp-cli/search-replace-command/issues/157#issuecomment-876750207) so that all instances in an individual cell will get replaced.
+`(.*?)(\s|\/|'|\"|>)` [should avoid a greedy regex](https://github.com/wp-cli/search-replace-command/issues/157#issuecomment-876750207) so that all instances in an individual cell will get replaced. 
 
-It should also work if the link is missing the trailing slash -- it looks for a delimiter of a trailing slash, single quote, double quote, space, or greater-than sign.
+Use double-quotes around the search/replace fields for the escaping to work properly without an error. It should also work if the link is missing the trailing slash -- it looks for a delimiter of a trailing slash, single quote, double quote, space, or greater-than sign.
+
+Note, also, the `\1\2` in the replacement - this will carry over the slug _and_ any trailing slash, quote, etc.
+
+If there are subcategories, be sure to replace them first!
 ```
-wp search-replace 'https:\/\/domain\.com\/category-name\/(.*?)(\/|'|"|\s|>)` `https://domain.com/\1` --regex --skip-columns=guid --dry-run
+wp search-replace "https:\/\/domain\.com\/category-name\/subcategory-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2" wp_posts wp_comments --regex --skip-columns=guid --dry-run
+wp search-replace "https:\/\/domain\.com\/category-name\/(.+?)(\s|\/|'|\"|>)" "https://domain.com/\1\2" wp_posts wp_comments --regex --skip-columns=guid --dry-run
 ```
 
 ## Full list of built-in commands
