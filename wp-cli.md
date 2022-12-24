@@ -29,7 +29,7 @@ wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/(.*).html' 'https://
 
 This needs to be done separately for each hardcoded category URL, replacing the most specific categories (child categories) first. 
 
-`(.*?)(\s|\/|'|\"|>)` [should avoid a greedy regex](https://github.com/wp-cli/search-replace-command/issues/157#issuecomment-876750207) so that all instances in an individual cell will get replaced. 
+`(.+?)(\s|\/|'|\"|>)` [should avoid a greedy regex](https://github.com/wp-cli/search-replace-command/issues/157#issuecomment-876750207) so that all instances in an individual cell will get replaced. 
 
 Use double-quotes around the search/replace fields for the escaping to work properly without an error. It should also work if the link is missing the trailing slash -- it looks for a delimiter of a trailing slash, single quote, double quote, space, or greater-than sign.
 
