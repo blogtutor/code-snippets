@@ -32,11 +32,13 @@ du -h
 ```
 
 ### Finding backdoors
-_Search for these strings in files to track down hidden backdoors_.  
+_Search for strings in files to track down hidden backdoors_.  Some examples:
 ```
-grep -r 'You are logged in'
 grep -r '<?php`
+grep -r 'You are logged in'
+grep -r '$_GET'
 grep -r 'if(isset($_GET'
+grep -r 'POST'
 ```
 _Note this example uses Regex and can be run from /uploads/ to searches the `20*` folders only._
 ```
@@ -54,11 +56,11 @@ _Add the -delete flag to delete the found files_:
 ```
 find . -type f -name '*.webp' -delete
 ```
-_Find files that don't have expected extensions - useful when searching in /uploads/ folder especially_
+_Find files that don't have expected extensions - useful when searching for non-image files in /uploads/20*_:
 ```
 find 2* -type f -not -name '*.jpg' -not -name '*.jpeg' -not -name '*.webp' -not -name '*.png'
 ```
-_Delete a folder with stuff in it. CAREFUL: There is no confirmation and no undo!_
+_Delete a folder with stuff in it, including all subfolders. CAREFUL: There is no confirmation and no undo!!_
 ```
 rm -rf foldername
 ```
