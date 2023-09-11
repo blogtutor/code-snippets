@@ -9,9 +9,9 @@ man [command]
 
 # Working with files & folders
 
-### List all files in a folder, sorted by file size (largest first)
+### List all files in a folder, sorted by file size (largest first).
 ```
-ls -lhS
+ls -lhSa
 ```
 
 ### List specific filetypes in a folder
@@ -34,15 +34,16 @@ du -h
 ### Finding backdoors
 _Search for strings in files to track down hidden backdoors_.  Some examples:
 ```
-grep -r '<?php`
-grep -r 'You are logged in'
-grep -r '$_GET'
-grep -r 'if(isset($_GET'
-grep -r 'POST'
+grep -R '<?php`
+grep -R 'You are logged in'
+grep -R '$_GET'
+grep -R 'if(isset($_GET'
+grep -R 'POST'
+grep -R 'administrator'
 ```
 _Note this example uses Regex and can be run from /uploads/ to searches the `20*` folders only._
 ```
-grep -E -r -o 'base64|st_rot13|gzuncompress|eval|exec|system|assert|stripslashes|reg_replace|move_uploaded_file|<?php' 20*
+grep -E -R -o 'base64|st_rot13|gzuncompress|eval|exec|system|assert|stripslashes|reg_replace|move_uploaded_file|<?php' 20*
 ```
 
 ### File Searching & Cleanup
