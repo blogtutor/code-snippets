@@ -67,6 +67,18 @@ _Delete a folder with stuff in it, including all subfolders. CAREFUL: There is n
 ```
 rm -rf foldername
 ```
+_Find files with a certain date, newer than a certain date, or between dates_. More info:
+https://unix.stackexchange.com/questions/424319/how-to-find-files-based-on-timestamp
+```
+find . -type f -ls | grep 'Jan 11 04'
+find . -type f -newermt '9/23/2023'
+find . -type f -newermt 2018-01-10 ! -newermt 2018-01-11 
+```
+_Find files that are owned by a group other than desired. For example, for BigScoots replace `GROUPNAME` with 'nginx'. Use `! -path` to exclude paths._
+```
+find . ! -group GROUPNAME 
+find . ! -group GROUPNAME ! -path './APATH/' ! -path './ANOTHERPATH'
+```
 
 # SSL Stuff
 
