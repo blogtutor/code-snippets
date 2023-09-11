@@ -39,7 +39,9 @@ grep -R 'You are logged in'
 grep -R '$_GET'
 grep -R 'if(isset($_GET'
 grep -R 'POST'
-grep -R 'administrator'
+grep -R 'administrator'   ## Good to run in /uploads/
+grep -R 'wp_create_user'  ## Good to run from /wp-content/ and also check root folder
+grep -R '/perl'
 ```
 _Note this example uses Regex and can be run from /uploads/ to searches the `20*` folders only._
 ```
