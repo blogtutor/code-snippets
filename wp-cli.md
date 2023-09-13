@@ -25,6 +25,10 @@ wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/' 'https://domain.co
 ```
 wp search-replace 'https://domain.com/([0-9]{4})/([0-9]{2})/(.*).html' 'https://domain.com/\3/' --regex --skip-columns=guid --dry-run
 ```
+**_Change `/postname.html` to `/postname/` in permalinks. Make sure all links are https: first._**
+```
+wp search-replace "https:\/\/www\.domain\.com/(.*?)\.html(\s|\/|'|\"|>)" 'https://www.domain.com/\1/\2' --regex --skip-columns=guid --log=remove-html.log --dry-run
+```
 **_Change `/category/postname/` to `/postname/` in permalinks. Make sure all links are https: first._**
 
 This needs to be done separately for each hardcoded category URL, replacing the most specific categories (child categories) first. 
