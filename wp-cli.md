@@ -72,9 +72,10 @@ https://make.wordpress.org/cli/handbook/installing/
 
 ## Malware Cleanup
 
-Check core integrity:
+Check core & plugin integrity:
 ```
 wp core verify-checksums
+wp plugin verify-checksums --all --strict
 ```
 
 Quickly reinstall latest version of core files:
