@@ -30,6 +30,10 @@ _Check total disk usage of a folder:_
 ```
 du -h
 ```
+_Find the ten largest folders in the current directory:_
+```
+du -hs * | sort -rh | head -10
+```
 
 ### Finding backdoors
 _Search for strings in files to track down hidden backdoors_.  Some examples:
