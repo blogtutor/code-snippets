@@ -65,7 +65,7 @@ find . -type f -name '*.webp' -delete
 ```
 _Find files that don't have expected extensions - useful when searching for non-image files in /uploads/20*_:
 ```
-find 2* -type f -not -name '*.jpg' -not -name '*.jpeg' -not -name '*.webp' -not -name '*.png'
+find 2* -type f -not -name '*.jpg' -not -name '*.jpeg' -not -name '*.webp' -not -name '*.png' -not -name '*.gif'
 ```
 _Delete a folder with stuff in it, including all subfolders. CAREFUL: There is no confirmation and no undo!!_
 ```
