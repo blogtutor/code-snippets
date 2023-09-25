@@ -49,7 +49,7 @@ grep -R '/perl'
 ```
 _Note this example uses Regex and can be run from /uploads/ to searches the `20*` folders only._
 ```
-grep -E -R -o 'base64|st_rot13|gzuncompress|eval|exec|system|assert|stripslashes|reg_replace|move_uploaded_file|<?php' 20*
+grep -E -R -o 'base64|st_rot13|gzuncompress|eval|exec|system|assert|stripslashes|reg_replace|move_uploaded_file|<\?php' 20*
 ```
 
 ### File Searching & Cleanup
