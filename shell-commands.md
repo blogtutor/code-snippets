@@ -38,7 +38,7 @@ du -hs * | sort -rh | head -10
 ### Finding backdoors
 _Search for strings in files to track down hidden backdoors_. Remember that special characters must be escaped with a `\`. Some examples:
 ```
-grep -R '<\?php '
+grep -R "<\?php "
 grep -R 'You are logged in'
 grep -R '\$_GET'
 grep -R 'if\(isset(\$_GET'
