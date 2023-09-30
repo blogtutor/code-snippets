@@ -36,16 +36,16 @@ du -hs * | sort -rh | head -10
 ```
 
 ### Finding backdoors
-_Search for strings in files to track down hidden backdoors_.  Some examples:
+_Search for strings in files to track down hidden backdoors_. Remember that special characters must be escaped with a `\`. Some examples:
 ```
 grep -R '<\?php`
 grep -R 'You are logged in'
-grep -R '$_GET'
-grep -R 'if(isset($_GET'
+grep -R '\$_GET'
+grep -R 'if\(isset(\$_GET'
 grep -R 'POST'
 grep -R 'administrator'   ## Good to run in /uploads/
 grep -R 'wp_create_user'  ## Good to run from /wp-content/ and also check root folder
-grep -R '/perl'
+grep -R '\/perl'
 ```
 _Note this example uses Regex and can be run from /uploads/ to searches the `20*` folders only._
 ```
