@@ -104,3 +104,9 @@ wp user reset-password $(wp user list --field=user_login --role=administrator)
 wp user reset-password $(wp user list --field=user_login --role=editor)
 wp user reset-password $(wp user list --role="administrator" --field=user_login && wp user list --role="editor" --field=user_login)
 ```
+
+Reset a single user's password & display the new password (and don't send an email).
+
+```
+wp user reset-password username --show-password --skip-email
+```
